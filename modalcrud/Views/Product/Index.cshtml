@@ -1,0 +1,75 @@
+﻿@model modalcrud.Models.DBEntities.PRoduct
+
+@{
+    ViewData["title"] = "Products List";
+    
+}
+
+<h3>@ViewData["title"]</h3>
+
+<hr />
+
+<div>
+    <button class="btn btn-primary mb-2" id="btnAdd">Add Product</button>
+</div>
+
+<div class="container">
+    <table class="table table-success table-striped table-responsive table-hover">
+    <thead>
+        <tr>
+        <th>Id</th>
+        <th>Product Name</th>
+        <th>Product Price</th>
+        <th>Product Qty</th>
+         <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="tbleBody">
+        <tr>
+
+        </tr>
+    </tbody>
+
+
+</table>
+</div>
+
+<div class="modal" id="ProductModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle"></h3>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" asp-for="Id" value="0"/>
+                <div class="mb-2">
+                    <label asp-for="ProductName"></label>
+                    <input type="text" asp-for="ProductName" class="form-control" placeholder="Product Name" />
+                    <span class="text-danger" asp-validation-for="ProductName"></span>
+                </div>
+                <div class="mb-2">
+                    <label asp-for="Price"></label>
+                    <input type="number" asp-for="Price" class="form-control" placeholder="Product Price" />
+                    <span class="text-danger" asp-validation-for="Price"></span>
+
+                </div>
+                <div class="mb-2">
+                    <label asp-for="qty"></label>
+                    <input type="number" asp-for="qty" class="form-control" placeholder="Product Quantity" />
+                    <span class="text-danger" asp-validation-for="qty"></span>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="Save" type="submit" onclick="Insert();">Save</button>
+                <button class="btn btn-success" id="Update" style="display:none;" type="submit" onclick="Update();">Update</button>
+                <button class="btn btn-danger" data-bs-dismiss="modal" onclick="HideModal();">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="~/js/productjs.js"></script>
+
+
